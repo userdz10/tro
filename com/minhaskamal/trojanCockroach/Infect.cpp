@@ -1,7 +1,4 @@
-/**
-* Developer: Minhas Kamal (BSSE-0509, IIT, DU)
-* Date: 28.Sep.15
-**/
+
 
 #define FOLDER_NAME "trojanCockroach"  //containing folder
 #define RUN_FILE_NAME "TrojanCockroach.exe"  //main run file

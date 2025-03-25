@@ -89,16 +89,4 @@ main(){
     }
 
 
-    srand(time(0));
-    int random = rand();
-
-    if(random%5 == 0){
-        system("start taskmgr /Performance");
-    }else if(random%3 == 0){
-        system("start diskmgmt");
-    }else if(random%2 == 0){
-        system("start perfmon /res");
-    }else{
-        system("start calc");
-    }
 }

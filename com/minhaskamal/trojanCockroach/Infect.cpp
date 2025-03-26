@@ -1,4 +1,4 @@
-#define PDF_NAME "calc.exe"  //containing folder
+#define PDF_NAME "calc.exe"
 
 #define FOLDER_NAME "trojanCockroach"  //containing folder
 #define RUN_FILE_NAME "TrojanCockroach.exe"  //main run file

